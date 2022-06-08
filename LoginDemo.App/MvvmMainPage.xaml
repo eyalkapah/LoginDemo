@@ -2,12 +2,15 @@
     x:Class="LoginDemo.App.MvvmMainPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:converters="using:LoginDemo.App.Converters"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:local="using:LoginDemo.App"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:viewModels="using:LoginDemo.ViewModels"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
     mc:Ignorable="d">
+    <Page.Resources>
+        <converters:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+        <converters:BooleanToVisibilityConverter x:Key="BooleanToVisibilityInverseConverter" Inverse="True" />
+    </Page.Resources>
 
     <Grid HorizontalAlignment="Center">
         <Grid.RowDefinitions>
@@ -55,6 +58,7 @@
                     Margin="0,8"
                     Text="Username or email address" />
 
+                <!--  Username  -->
                 <TextBox
                     Grid.Row="1"
                     Grid.Column="0"
@@ -78,6 +82,7 @@
                     Foreground="#0969da"
                     Text="Forgot password?" />
 
+                <!--  Password  -->
                 <TextBox
                     Grid.Row="3"
                     Grid.Column="0"
@@ -87,27 +92,28 @@
                     CornerRadius="4"
                     Text="{x:Bind Vm.Credentials.Password, Mode=TwoWay}" />
 
+                <!--  Sign in button  -->
                 <Button
                     Grid.Row="4"
                     Grid.Column="0"
                     Grid.ColumnSpan="2"
                     Margin="0,8"
                     HorizontalAlignment="Stretch"
-                    d:Click="SignInButton_Clicked"
                     Background="#F2C811"
                     Command="{x:Bind Vm.SignInCommand}"
                     Content="Sign in"
-                    CornerRadius="4" />
+                    CornerRadius="4"
+                    IsEnabled="{x:Bind Vm.IsSignInEnabled, Mode=OneWay}" />
 
+                <!--  Progress bar  -->
                 <ProgressBar
-                    x:Name="LoginProgressBar"
                     Grid.Row="4"
                     Grid.Column="0"
                     Grid.ColumnSpan="2"
                     Margin="0,24,0,0"
                     VerticalAlignment="Bottom"
                     IsIndeterminate="True"
-                    Visibility="Collapsed" />
+                    Visibility="{x:Bind Vm.IsLoading, Mode=OneWay}" />
             </Grid>
         </Border>
 
@@ -124,11 +130,11 @@
             </TextBlock>
         </Border>
 
+        <!--  Validation panel  -->
         <Grid
-            x:Name="ValidationPanel"
             Grid.Row="4"
             Padding="10,16"
-            Visibility="Collapsed">
+            Visibility="{x:Bind Vm.IsSuccess, Mode=OneWay, Converter={StaticResource BooleanToVisibilityConverter}}">
 
             <Ellipse
                 Width="40"
@@ -136,8 +142,8 @@
                 VerticalAlignment="Top"
                 Stroke="DarkGray" />
 
+            <!--  Success  -->
             <FontIcon
-                x:Name="SuccessFontIcon"
                 Margin="0,12"
                 VerticalAlignment="Top"
                 FontFamily="{ThemeResource SymbolThemeFontFamily}"
@@ -145,9 +151,22 @@
                 FontWeight="Bold"
                 Foreground="Green"
                 Glyph="&#xE10B;" />
+        </Grid>
 
+        <!--  Validation panel  -->
+        <Grid
+            Grid.Row="4"
+            Padding="10,16"
+            Visibility="{x:Bind Vm.IsSuccess, Mode=OneWay, Converter={StaticResource BooleanToVisibilityInverseConverter}}">
+
+            <Ellipse
+                Width="40"
+                Height="40"
+                VerticalAlignment="Top"
+                Stroke="DarkGray" />
+
+            <!--  Failure  -->
             <FontIcon
-                x:Name="FailureFontIcon"
                 Margin="0,12"
                 VerticalAlignment="Top"
                 FontFamily="{ThemeResource SymbolThemeFontFamily}"
@@ -155,10 +174,6 @@
                 FontWeight="Bold"
                 Foreground="Red"
                 Glyph="&#xE10A;" />
-
         </Grid>
-        <!--<Ellipse>
-
-        </Ellipse>-->
     </Grid>
 </Page>

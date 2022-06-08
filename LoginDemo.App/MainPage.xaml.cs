@@ -39,31 +39,49 @@ namespace LoginDemo.App
 
             var result = await SignInService.SignInAsync(UsernameTextBox.Text, PasswordTextBox.Text);
 
-            AfterSignIn();
+            AfterSignIn(result);
+        }
 
+        private void AfterSignIn(bool result)
+        {
+            // Hide progress bar
+            LoginProgressBar.Visibility = Visibility.Collapsed;
+
+            // Enable the sign in button
+            SignInButton.IsEnabled = true;
+
+            // Show result
+            ValidationPanel.Visibility = Visibility.Visible;
+
+            // Success
             if (result)
             {
+                // Show success 
                 SuccessFontIcon.Visibility = Visibility.Visible;
+
+                // Hide failure
                 FailureFontIcon.Visibility = Visibility.Collapsed;
             }
+            // Failure
             else
             {
+                // Show failure
                 FailureFontIcon.Visibility = Visibility.Visible;
+
+                // Hide success
                 SuccessFontIcon.Visibility = Visibility.Collapsed;
             }
         }
 
-        private void AfterSignIn()
-        {
-            LoginProgressBar.Visibility = Visibility.Collapsed;
-            SignInButton.IsEnabled = true;
-            ValidationPanel.Visibility = Visibility.Visible;
-        }
-
         private void BeforeSignIn()
         {
+            // Show progress bar
             LoginProgressBar.Visibility = Visibility.Visible;
+
+            // Disable the sign in button while API call in progress
             SignInButton.IsEnabled = false;
+
+            // Hide result
             ValidationPanel.Visibility = Visibility.Collapsed;
         }
     }
