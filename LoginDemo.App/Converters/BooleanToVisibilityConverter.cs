@@ -10,17 +10,20 @@ namespace LoginDemo.App.Converters
 
         public object Convert(object value, Type targetType, object parameter, string language)
         {
+            // 'null' --> Collapse
             if (value == null)
                 return Visibility.Collapsed;
 
-            var result = (bool)value
-                ? Visibility.Visible
-                : Visibility.Collapsed;
-
+            // True --> Visible
+            // False --> Collapse
             if (!Inverse)
-                return result;
+                return (bool)value
+                    ? Visibility.Visible
+                    : Visibility.Collapsed; 
 
-            return result == Visibility.Visible ? Visibility.Collapsed : Visibility.Visible;
+            // True --> Collapse
+            // False --> Collapse
+            return (bool)value ? Visibility.Collapsed : Visibility.Visible;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, string language)

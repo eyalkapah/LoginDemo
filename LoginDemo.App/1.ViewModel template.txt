@@ -1,0 +1,53 @@
+﻿public class MainPageViewModel : Observable
+    {
+        // Model
+
+
+        // SignIn Command
+
+
+        // SignIn Service
+
+
+        // C'tpr
+        //
+        public MainPageViewModel()
+        {
+            // Initialization
+        }
+
+
+        private async void SignInAsync()
+        {
+            BeforeSignIn();
+
+            var result = await SignInService.SignInAsync(Credentials.Username, Credentials.Password);
+
+            AfterSignIn(result);
+        }
+
+        private void BeforeSignIn()
+        {
+            // Show progress bar
+
+
+            // Disable the sign in button while API call in progress
+
+
+            // Hide result panel
+
+        }
+
+        private void AfterSignIn(bool result)
+        {
+            // Hide progress bar
+
+
+            // Enable the sign in button
+
+
+            // Show result
+            
+        }
+    }
+}

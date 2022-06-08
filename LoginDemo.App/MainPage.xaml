@@ -128,7 +128,7 @@
 
         <!--  Validation panel  -->
         <Grid
-            x:Name="ValidationPanel"
+            x:Name="SuccessValidationPanel"
             Grid.Row="4"
             Padding="10,16"
             Visibility="Collapsed">
@@ -141,7 +141,6 @@
 
             <!--  Success  -->
             <FontIcon
-                x:Name="SuccessFontIcon"
                 Margin="0,12"
                 VerticalAlignment="Top"
                 FontFamily="{ThemeResource SymbolThemeFontFamily}"
@@ -149,10 +148,23 @@
                 FontWeight="Bold"
                 Foreground="Green"
                 Glyph="&#xE10B;" />
+        </Grid>
+
+        <!--  Validation panel  -->
+        <Grid
+            x:Name="FailureValidationPanel"
+            Grid.Row="4"
+            Padding="10,16"
+            Visibility="Collapsed">
+
+            <Ellipse
+                Width="40"
+                Height="40"
+                VerticalAlignment="Top"
+                Stroke="DarkGray" />
 
             <!--  Failure  -->
             <FontIcon
-                x:Name="FailureFontIcon"
                 Margin="0,12"
                 VerticalAlignment="Top"
                 FontFamily="{ThemeResource SymbolThemeFontFamily}"

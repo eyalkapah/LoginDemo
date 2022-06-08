@@ -2,6 +2,13 @@
     x:Class="LoginDemo.App.App"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:converters="using:LoginDemo.App.Converters"
     xmlns:local="using:LoginDemo.App">
 
+    <Application.Resources>
+        <ResourceDictionary>
+            <converters:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+            <converters:BooleanToVisibilityConverter x:Key="BooleanToVisibilityInverseConverter" Inverse="True" />
+        </ResourceDictionary>
+    </Application.Resources>
 </Application>
