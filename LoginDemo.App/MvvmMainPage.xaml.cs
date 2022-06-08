@@ -10,13 +10,13 @@ namespace LoginDemo.App
     /// </summary>
     public sealed partial class MvvmMainPage : Page
     {
-        public MainPageViewModel Vm => DataContext as MainPageViewModel;
+        public MainPageMvvmCrossViewModel Vm => DataContext as MainPageMvvmCrossViewModel;
 
         public MvvmMainPage()
         {
             this.InitializeComponent();
 
-            DataContext = new MainPageViewModel();
+            DataContext = new MainPageMvvmCrossViewModel();
         }
     }
 }

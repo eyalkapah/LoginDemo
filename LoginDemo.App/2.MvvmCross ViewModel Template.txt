@@ -1,0 +1,71 @@
+﻿public class MainPageMvvmCrossViewModel 
+{
+    // Model
+    public Credentials Credentials { get; set; }
+
+    // SignIn Command
+    public ICommand SignInCommand { get; set; }
+
+    // SignIn Service
+    public SignInService SignInService { get; set; }
+
+   
+
+    // C'tor
+    //
+    public MainPageMvvmCrossViewModel()
+    {
+        // Initialization
+        Credentials = new Credentials
+        {
+            Username = "test",
+            Password = "password"
+        };
+
+        SignInService = new SignInService();
+        SignInCommand = new MvxCommand(SignInAsync);
+    }
+
+
+    private async void SignInAsync()
+    {
+        BeforeSignIn();
+
+        var result = await SignInService.SignInAsync(Credentials.Username, Credentials.Password);
+
+        AfterSignIn(result);
+    }
+
+    private void BeforeSignIn()
+    {
+        // Show progress bar
+        IsLoading = true;
+
+        // Disable the sign in button while API call in progress
+        IsSignInEnabled = false;
+
+        // Hide result panel
+        IsSuccess = null;
+    }
+
+    private void AfterSignIn(bool result)
+    {
+        // Hide progress bar
+        IsLoading = false;
+
+        // Enable the sign in button
+        IsSignInEnabled = true;
+
+        // Show result
+        IsSuccess = result;
+    }
+}
+
+
+public class Credentials : MvxNotifyPropertyChanged
+{
+    // Username
+
+    
+    // Password
+}

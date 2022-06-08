@@ -1,14 +1,8 @@
 ﻿using LoginDemo.Models;
 using LoginDemo.Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Input;
-using MvvmCross.ViewModels;
-using LoginDemo.Common;
 using MvvmCross.Commands;
+using MvvmCross.ViewModels;
+using System.Windows.Input;
 
 namespace LoginDemo.ViewModels
 {
@@ -23,8 +17,31 @@ namespace LoginDemo.ViewModels
         // SignIn Service
         public SignInService SignInService { get; set; }
 
+        private bool _isLoading;
 
-        // C'tpr
+        public bool IsLoading
+        {
+            get => _isLoading;
+            set => SetProperty(ref _isLoading, value);
+        }
+
+        private bool _isSignInEnabled;
+
+        public bool IsSignInEnabled
+        {
+            get => _isSignInEnabled;
+            set => SetProperty(ref _isSignInEnabled, value);
+        }
+
+        private bool? _isSuccess;
+
+        public bool? IsSuccess
+        {
+            get => _isSuccess;
+            set => SetProperty(ref _isSuccess, value);
+        }
+
+        // C'tor
         //
         public MainPageMvvmCrossViewModel()
         {
