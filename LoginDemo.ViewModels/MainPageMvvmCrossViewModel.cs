@@ -25,7 +25,7 @@ namespace LoginDemo.ViewModels
             set => SetProperty(ref _isLoading, value);
         }
 
-        private bool _isSignInEnabled;
+        private bool _isSignInEnabled = true;
 
         public bool IsSignInEnabled
         {
