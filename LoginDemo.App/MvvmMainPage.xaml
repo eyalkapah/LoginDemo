@@ -41,6 +41,7 @@
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
@@ -88,7 +89,7 @@
                     Text="{x:Bind Vm.Credentials.Password, Mode=TwoWay}" />
 
                 <!--  Sign in button  -->
-                <Button
+                <ToggleButton
                     Grid.Row="4"
                     Grid.Column="0"
                     Grid.ColumnSpan="2"
@@ -102,6 +103,7 @@
 
                 <!--  Progress bar  -->
                 <ProgressBar
+                    x:Name="ProgressBar"
                     Grid.Row="4"
                     Grid.Column="0"
                     Grid.ColumnSpan="2"

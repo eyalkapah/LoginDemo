@@ -134,10 +134,12 @@
     </AppxManifest>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="0.View.txt" />
     <Content Include="2.MvvmCross ViewModel Template.txt" />
     <Content Include="Assets\PowerBIStoreLogo.png" />
     <Content Include="Assets\totoro-transparent.gif" />
     <Content Include="docs\readme.txt" />
+    <Content Include="3.MvvmToolkit-Template.txt" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />

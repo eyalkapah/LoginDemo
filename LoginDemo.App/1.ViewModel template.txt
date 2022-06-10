@@ -1,61 +1,33 @@
-﻿public class MainPageViewModel
-{
-    // Model
+﻿// 1
+Create a new view based on the existing one
 
+// 2
+Create a view model with model
 
-    // SignIn Command
+// 3
+Copy the content of the view code-behind to the view model
 
+// 4
+Data Binding
+	- When binding occurs
+	- Binding mode
+	- Converters
 
-    // SignIn Service
+// 5
+Eliminate UI related properties:
+	- Naming principles 
+		LoginProgressBar.Visibility --> IsLoading
+		SignInButton.IsEnabled --> IsSignInEnabled
 
+		SuccessValidationPanel.Visibility = Visibility.Visible;		--> IsSuccess
+		FailureValidationPanel.Visibility = Visibility.Collapsed;
 
-    // C'tpr
-    //
-    public MainPageViewModel()
-    {
-        // Initialization
-    }
+// 6
+Inherit from INotifyPropertyChanged
 
+// 7
+Convert the Click method to RelayCommand
 
-    private async void SignInAsync()
-    {
-        BeforeSignIn();
-
-        var result = await SignInService.SignInAsync(Credentials.Username, Credentials.Password);
-
-        AfterSignIn(result);
-    }
-
-    private void BeforeSignIn()
-    {
-        // Show progress bar
-
-
-        // Disable the sign in button while API call in progress
-
-
-        // Hide result panel
-
-    }
-
-    private void AfterSignIn(bool result)
-    {
-        // Hide progress bar
-
-
-        // Enable the sign in button
-
-
-        // Show result
-            
-    }
-}
-
-
-public class Credentials
-{
-    // Username
-
-    
-    // Password
-}
+// 8
+Refactoring
+	Extract INotifyPropertyChanged

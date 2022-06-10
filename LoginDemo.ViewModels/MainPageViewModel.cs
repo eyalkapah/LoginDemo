@@ -7,8 +7,9 @@ namespace LoginDemo.ViewModels
     public class MainPageViewModel : Observable
     {
         public Credentials Credentials { get; set; }
-
+        
         public RelayCommand SignInCommand { get; set; }
+        
         public SignInService SignInService { get; set; }
 
         private bool? _isSuccess;

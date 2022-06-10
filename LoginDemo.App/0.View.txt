@@ -1,0 +1,13 @@
+﻿// 1 
+The MainPage.xaml
+	- Xaml
+	- Lookless controls
+	- Code behind
+	- Building UI in VS2022
+		- Live Visual Tree (LVT)
+
+// 2
+The MainPage.xaml.cs
+
+// 3
+The connection between Xaml and the code-behind
