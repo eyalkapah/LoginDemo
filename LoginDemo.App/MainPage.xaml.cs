@@ -1,6 +1,7 @@
 ﻿using LoginDemo.Services;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using LoginDemo.Models;
 
 namespace LoginDemo.App
 {
@@ -8,25 +9,27 @@ namespace LoginDemo.App
     {
         // SignIn Service
         public SignInService SignInService { get; set; }
+        public ICredentials Credentials { get; set; }
 
         public MainPage()
         {
             this.InitializeComponent();
 
             SignInService = new SignInService();
+            Credentials = new Credentials(); 
         }
 
         private async void SignInButton_Clicked(object sender, RoutedEventArgs e)
         {
-            BeforeSignIn();
+            UpdateUIBeforeSignIn();
 
             // Try Sign In
             var result = await SignInService.SignInAsync(UsernameTextBox.Text, PasswordTextBox.Text);
 
-            AfterSignIn(result);
+            UpdateUIAfterSignIn(result);
         }
 
-        private void AfterSignIn(bool result)
+        private void UpdateUIAfterSignIn(bool result)
         {
             // Hide progress bar
             LoginProgressBar.Visibility = Visibility.Collapsed;
@@ -38,23 +41,23 @@ namespace LoginDemo.App
             if (result)
             {
                 // Show success 
-                SuccessValidationPanel.Visibility = Visibility.Visible;
+                SuccessResultPanel.Visibility = Visibility.Visible;
 
                 // Hide failure
-                FailureValidationPanel.Visibility = Visibility.Collapsed;
+                FailureResultPanel.Visibility = Visibility.Collapsed;
             }
             // Failure
             else
             {
                 // Hide success
-                SuccessValidationPanel.Visibility = Visibility.Collapsed;
+                SuccessResultPanel.Visibility = Visibility.Collapsed;
 
                 // Show failure
-                FailureValidationPanel.Visibility = Visibility.Visible;
+                FailureResultPanel.Visibility = Visibility.Visible;
             }
         }
 
-        private void BeforeSignIn()
+        private void UpdateUIBeforeSignIn()
         {
             // Show progress bar
             LoginProgressBar.Visibility = Visibility.Visible;
@@ -63,8 +66,8 @@ namespace LoginDemo.App
             SignInButton.IsEnabled = false;
 
             // Hide result
-            SuccessValidationPanel.Visibility = Visibility.Collapsed;
-            FailureValidationPanel.Visibility = Visibility.Collapsed;
+            SuccessResultPanel.Visibility = Visibility.Collapsed;
+            FailureResultPanel.Visibility = Visibility.Collapsed;
         }
     }
 }

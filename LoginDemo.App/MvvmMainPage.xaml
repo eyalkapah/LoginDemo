@@ -89,7 +89,7 @@
                     Text="{x:Bind Vm.Credentials.Password, Mode=TwoWay}" />
 
                 <!--  Sign in button  -->
-                <ToggleButton
+                <Button
                     Grid.Row="4"
                     Grid.Column="0"
                     Grid.ColumnSpan="2"
@@ -127,7 +127,7 @@
             </TextBlock>
         </Border>
 
-        <!--  Validation panel  -->
+        <!--  Success result panel  -->
         <Grid
             Grid.Row="4"
             Padding="10,16"
@@ -150,7 +150,7 @@
                 Glyph="&#xE10B;" />
         </Grid>
 
-        <!--  Validation panel  -->
+        <!--  Success result panel  -->
         <Grid
             Grid.Row="4"
             Padding="10,16"

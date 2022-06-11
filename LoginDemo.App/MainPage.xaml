@@ -126,9 +126,9 @@
             </TextBlock>
         </Border>
 
-        <!--  Validation panel  -->
+        <!--  Success result panel  -->
         <Grid
-            x:Name="SuccessValidationPanel"
+            x:Name="SuccessResultPanel"
             Grid.Row="4"
             Padding="10,16"
             Visibility="Collapsed">
@@ -150,9 +150,9 @@
                 Glyph="&#xE10B;" />
         </Grid>
 
-        <!--  Validation panel  -->
+        <!--  Success result panel  -->
         <Grid
-            x:Name="FailureValidationPanel"
+            x:Name="FailureResultPanel"
             Grid.Row="4"
             Padding="10,16"
             Visibility="Collapsed">

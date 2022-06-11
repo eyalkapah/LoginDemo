@@ -42,7 +42,7 @@ namespace LoginDemo.ViewModels
             // Disable the sign in button while API call in progress
             IsSignInEnabled = false;
 
-            // Hide result panel
+            // Hide success result panel
             IsSuccess = null;
         }
 

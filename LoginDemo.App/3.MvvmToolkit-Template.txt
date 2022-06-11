@@ -47,7 +47,7 @@
         // Disable the sign in button while API call in progress
         IsSignInEnabled = false;
 
-        // Hide result panel
+        // Hide Success result panel
         IsSuccess = null;
     }
 
