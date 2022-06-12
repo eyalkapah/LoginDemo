@@ -9,7 +9,7 @@ namespace LoginDemo.ViewModels
     public class MainPageMvvmCrossViewModel : MvxViewModel
     {
         // Model
-        public Credentials Credentials { get; set; }
+        public CredentialsMvvmCross Credentials { get; set; }
 
         // SignIn Command
         public ICommand SignInCommand { get; set; }
@@ -46,11 +46,7 @@ namespace LoginDemo.ViewModels
         public MainPageMvvmCrossViewModel()
         {
             // Initialization
-            Credentials = new Credentials
-            {
-                Username = "test",
-                Password = "password"
-            };
+            Credentials = new CredentialsMvvmCross();
 
             SignInService = new SignInService();
             SignInCommand = new MvxCommand(SignInAsync);

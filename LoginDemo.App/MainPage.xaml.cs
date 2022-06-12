@@ -9,14 +9,12 @@ namespace LoginDemo.App
     {
         // SignIn Service
         public SignInService SignInService { get; set; }
-        public ICredentials Credentials { get; set; }
 
         public MainPage()
         {
             this.InitializeComponent();
 
             SignInService = new SignInService();
-            Credentials = new Credentials(); 
         }
 
         private async void SignInButton_Clicked(object sender, RoutedEventArgs e)

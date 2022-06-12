@@ -59,11 +59,7 @@ namespace LoginDemo.ViewModels
 
         public MainPageViewModel()
         {
-            Credentials = new Credentials
-            {
-                Username = "test",
-                Password = "password"
-            };
+            Credentials = new Credentials();
 
             SignInService = new SignInService();
             SignInCommand = new RelayCommand(SignInAsync);
